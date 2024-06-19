@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoginPage", "LoginPage", "{DC0B71B8-35FE-4F91-A892-F7D3DEF8F791}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{59045CAF-EE3D-49E4-BAE8-FFC63EB7FFDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{AA119E63-2D77-44B3-9CFF-CB60A29DDDCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginPage.Api", "LoginPage\API\LoginPage.Api\LoginPage.Api.csproj", "{1F7B99EA-0930-4F6F-967E-645C0472E92F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginPage.Web", "LoginPage\Web\LoginPage.Web\LoginPage.Web.csproj", "{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F7B99EA-0930-4F6F-967E-645C0472E92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F7B99EA-0930-4F6F-967E-645C0472E92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F7B99EA-0930-4F6F-967E-645C0472E92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F7B99EA-0930-4F6F-967E-645C0472E92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59045CAF-EE3D-49E4-BAE8-FFC63EB7FFDE} = {DC0B71B8-35FE-4F91-A892-F7D3DEF8F791}
+		{AA119E63-2D77-44B3-9CFF-CB60A29DDDCB} = {DC0B71B8-35FE-4F91-A892-F7D3DEF8F791}
+		{1F7B99EA-0930-4F6F-967E-645C0472E92F} = {59045CAF-EE3D-49E4-BAE8-FFC63EB7FFDE}
+		{CCE948C7-5CF6-4CAF-A20B-F13E22AE2F01} = {AA119E63-2D77-44B3-9CFF-CB60A29DDDCB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD7FA9F5-6AB3-43B4-961C-646201348305}
+	EndGlobalSection
+EndGlobal
