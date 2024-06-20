@@ -1,8 +1,99 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Hoşgeldiniz";
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Şifre Değiştir</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="changePasswordForm">
+                    <input type="hidden" class="form-control" id="email" name="Email" value="@User.Identity.Name.ToString()">
+                    <div class="form-group">
+                        <label for="currentPassword">Mevcut Şifre</label>
+                        <input type="password" class="form-control" id="currentPassword" name="CurrentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Yeni Şifre</label>
+                        <input type="password" class="form-control" id="newPassword" name="NewPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Yeni Şifre (Tekrar)</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Değiştir</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+        <div class="jumbotron mt-4">
+            <h1 class="display-4">Hoşgeldiniz @User.Identity.Name</h1>
+            <p class="lead">Giriş yaptığınız için teşekkür ederiz.</p>
+            <hr class="my-4">
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-danger">Çıkış Yap</button>
+            </form>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#changePasswordModal">Şifre Değiştir</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Şifre Değiştir Formunun Submit İşlemi
+        $('#changePasswordForm').submit(function (event) {
+            event.preventDefault(); // Formun otomatik submitini engelle
+
+            var currentPassword = $('#currentPassword').val();
+            var newPassword = $('#newPassword').val();
+            var confirmPassword = $('#confirmPassword').val();
+            var email = $('#email').val();
+
+            // Şifre eşleşme ve güvenlik kontrolü
+            if (newPassword !== confirmPassword) {
+                toastr.error('Yeni şifreler eşleşmiyor.');
+                return;
+            }
+           
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+            if (!passwordRegex.test(newPassword)) {
+                toastr.error('Yeni şifre en az 6 karakter uzunluğunda olmalı ve en az bir büyük harf, bir küçük harf, bir rakam ve bir özel karakter içermelidir.');
+                return;
+            }
+
+            // AJAX ile şifre değiştirme işlemi
+            $.ajax({
+                url: '/Account/ChangePassword', // Değiştirilecek action adresi
+                type: 'POST',
+                data: {
+                    currentPassword: currentPassword,
+                    newPassword: newPassword,
+                    confirmPassword: confirmPassword,
+                    email : email
+                },
+                success: function (response) {
+                    // Başarılı cevap
+                   
+                    toastr.success('Şifre başarıyla değiştirildi.');
+                    $('#changePasswordModal').modal('hidden');
+                },
+                error: function (xhr) {
+                    // Hata cevabı
+                    toastr.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
