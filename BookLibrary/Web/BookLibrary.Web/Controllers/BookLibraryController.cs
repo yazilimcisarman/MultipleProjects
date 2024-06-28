@@ -15,8 +15,9 @@ namespace BookLibrary.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var value = await _services.GetAllBooksAsync();
-            return View(value);
+            var allBooks = await _services.GetAllBooksAsync();
+            var lastTenBooks = allBooks.TakeLast(10).ToList();
+            return View(lastTenBooks);
         }
         public async Task<IActionResult> Edit(int id)
         {
