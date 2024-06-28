@@ -1,0 +1,30 @@
+﻿@using BookLibrary.Web.Dtos
+@model GetByIdBookDto
+
+
+<h2>Edit Book</h2>
+
+<form method="post" asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Yazar" class="control-label"></label>
+        <input asp-for="Yazar" class="form-control" />
+        <span asp-validation-for="Yazar" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Durum</label>
+        <input id="Durum" name="Durum" value="@Model.Durum" type="checkbox" @(Model.Durum == 1 ? "checked" : "") />
+        @* <span asp-validation-for="Durum" class="text-danger"></span> *@
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -17,8 +17,13 @@ namespace BookLibrary.Web.Controllers
 		{
 			return View();
 		}
+        public IActionResult Edit()
+        {
+            return View();
+        }
 
-		public IActionResult Privacy()
+
+        public IActionResult Privacy()
 		{
 			return View();
 		}

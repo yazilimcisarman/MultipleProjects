@@ -1,8 +1,14 @@
+using BookLibrary.Web.Data.Context;
+using BookLibrary.Web.Repositories;
+using BookLibrary.Web.Services.BookLibraryServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<BookLibraryDbContext>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IBookLibraryServices, BookLibraryServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=BookLibrary}/{action=Index}/{id?}");
 
 app.Run();

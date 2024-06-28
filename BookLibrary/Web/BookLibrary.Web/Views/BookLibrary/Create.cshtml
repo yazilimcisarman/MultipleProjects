@@ -1,0 +1,29 @@
+﻿@using BookLibrary.Web.Dtos
+@model CreateBookDto
+
+<h2>Create Book</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" required />
+        @* <span asp-validation-for="Name" class="text-danger"></span> *@
+    </div>
+    <div class="form-group">
+        <label asp-for="Yazar" class="control-label"></label>
+        <input asp-for="Yazar" class="form-control" required />
+        @* <span asp-validation-for="Yazar" class="text-danger"></span> *@
+    </div>
+    <div class="form-group">
+        <label class="control-label">Durum</label>
+        <input id="Durum" name="Durum" value="1" type="checkbox" />
+        @* <span asp-validation-for="Durum" class="text-danger"></span> *@
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Kaydet" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
